@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "stable"
+script:
+  - yarn test:coverage
+  - yarn build
+  - codecov
+branches:
+  - master
+  - dev
