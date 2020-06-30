@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     hexName() {
-      return `#${this.intToRGB(this.hashCode(this.name.toLowerCase()))}`;
+      return `#${this.intToRGB(this.hashCode(this.name.trim().toLowerCase()))}`;
     },
     containerStyles() {
       return {
