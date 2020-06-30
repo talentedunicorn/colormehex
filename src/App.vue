@@ -1,6 +1,6 @@
 <template>
   <main id="app" :style="containerStyles">
-    <h1 class="logo" :title="appName" @click="clear">
+    <h1 class="logo" @click="clear">
       <span class="hidden">ColorMeHex</span>
     </h1>
     <form @submit.prevent>
@@ -32,7 +32,6 @@
 import invert from "invert-color";
 
 export default {
-  name: "App",
   data() {
     return {
       name: "",
@@ -41,7 +40,7 @@ export default {
   },
   computed: {
     hexName() {
-      return `#${this.intToRGB(this.hashCode(this.name.toLowerCase()))}`;
+      return `#${this.intToRGB(this.hashCode(this.name.trim().toLowerCase()))}`;
     },
     containerStyles() {
       return {
