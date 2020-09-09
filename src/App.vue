@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       name: "",
-      copied: false
+      copied: false,
     };
   },
   computed: {
@@ -45,12 +45,12 @@ export default {
     containerStyles() {
       return {
         "--background": this.hexName,
-        "--color": this.invertedHex
+        "--color": this.invertedHex,
       };
     },
     invertedHex() {
       return invert(this.hexName);
-    }
+    },
   },
   methods: {
     hashCode(str) {
@@ -74,11 +74,11 @@ export default {
     },
     clear() {
       return (this.name = "");
-    }
+    },
   },
   mounted() {
     this.$refs.input.focus();
-  }
+  },
 };
 </script>
 
