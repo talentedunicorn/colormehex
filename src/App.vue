@@ -83,6 +83,11 @@ export default {
   },
   mounted() {
     this.$refs.input.focus();
+    const params = new URLSearchParams(window.location.search);
+    const text = params.get("text");
+    if (text && text.length > 0) {
+      this.name = text;
+    }
   },
 };
 </script>
@@ -106,10 +111,8 @@ body {
 }
 
 #app {
-  --logo-color: var(--color);
   --logo-size: 3rem;
   --font: "Share Tech Mono", Helvetica, Arial, sans-serif;
-  --input-shadow: 0 1px 2px var(--logo-color), 1px -1px 4px var(--logo-color);
 
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
@@ -129,7 +132,7 @@ body {
   width: 0px;
   height: 0px;
   mask: url("./assets/logo.svg") no-repeat center center/contain;
-  background: var(--logo-color);
+  background: var(--color);
 }
 
 form {
