@@ -41,7 +41,10 @@ export default {
   },
   computed: {
     hexName() {
-      return `#${this.intToRGB(this.hashCode(this.name.trim().toLowerCase()))}`;
+      let text = this.name.trim().toLowerCase();
+      text = this.hashCode(text);
+      text = this.intToRGB(text);
+      return `#${text}`;
     },
     containerStyles() {
       return {

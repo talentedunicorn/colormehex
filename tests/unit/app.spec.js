@@ -20,14 +20,14 @@ describe("App.vue", () => {
     expect(wrapper.vm.hexName).toBe("#AE398A");
   });
 
-  it("should be able to copy hex", async () => {
+  it("should be able to copy link", async () => {
     const mockedWriteText = jest.fn().mockResolvedValue(true);
     // Mock window navigation
     delete window.navigator;
     window.navigator = {
       clipboard: {
-        writeText: mockedWriteText
-      }
+        writeText: mockedWriteText,
+      },
     };
 
     wrapper.setData({ name: "lucas" });
@@ -35,7 +35,6 @@ describe("App.vue", () => {
     wrapper.vm.copyHex();
     await wrapper.vm.$nextTick();
     expect(mockedWriteText).toHaveBeenCalledTimes(1);
-    expect(mockedWriteText).toHaveBeenCalledWith(wrapper.vm.hexName);
     jest.runAllTimers();
     expect(wrapper.vm.copied).toBe(false);
   });
