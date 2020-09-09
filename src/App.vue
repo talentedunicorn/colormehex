@@ -24,6 +24,7 @@
 
     <footer>
       <p>Made by <a href="http://talentedunicorn.com">Talentedunicorn</a></p>
+      <a :href="shareLink">Share on Twitter</a>
     </footer>
   </main>
 </template>
@@ -35,7 +36,7 @@ export default {
   data() {
     return {
       name: "",
-      copied: false
+      copied: false,
     };
   },
   computed: {
@@ -45,12 +46,16 @@ export default {
     containerStyles() {
       return {
         "--background": this.hexName,
-        "--color": this.invertedHex
+        "--color": this.invertedHex,
       };
     },
     invertedHex() {
       return invert(this.hexName);
-    }
+    },
+    shareLink() {
+      const description = "A fun toy that changes your text to colors";
+      return `https://www.twitter.com/intent/tweet?url=${window.location.origin}&text=${description}`;
+    },
   },
   methods: {
     hashCode(str) {
@@ -74,11 +79,16 @@ export default {
     },
     clear() {
       return (this.name = "");
-    }
+    },
   },
   mounted() {
     this.$refs.input.focus();
-  }
+    const params = new URLSearchParams(window.location.search);
+    const text = params.get("text");
+    if (text && text.length > 0) {
+      this.name = text;
+    }
+  },
 };
 </script>
 
@@ -101,10 +111,8 @@ body {
 }
 
 #app {
-  --logo-color: var(--color);
   --logo-size: 3rem;
   --font: "Share Tech Mono", Helvetica, Arial, sans-serif;
-  --input-shadow: 0 1px 2px var(--logo-color), 1px -1px 4px var(--logo-color);
 
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
@@ -124,7 +132,7 @@ body {
   width: 0px;
   height: 0px;
   mask: url("./assets/logo.svg") no-repeat center center/contain;
-  background: var(--logo-color);
+  background: var(--color);
 }
 
 form {
@@ -156,6 +164,9 @@ form {
 }
 
 footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: auto;
   padding: 2rem;
 
