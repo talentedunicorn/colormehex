@@ -24,6 +24,7 @@
 
     <footer>
       <p>Made by <a href="http://talentedunicorn.com">Talentedunicorn</a></p>
+      <a :href="shareLink">Share on Twitter</a>
     </footer>
   </main>
 </template>
@@ -50,6 +51,10 @@ export default {
     },
     invertedHex() {
       return invert(this.hexName);
+    },
+    shareLink() {
+      const description = "A fun toy that changes your text to colors";
+      return `https://www.twitter.com/intent/tweet?url=${window.location.origin}&text=${description}`;
     },
   },
   methods: {
@@ -156,6 +161,9 @@ form {
 }
 
 footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: auto;
   padding: 2rem;
 
