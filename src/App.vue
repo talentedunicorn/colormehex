@@ -15,7 +15,7 @@
       </label>
 
       <label v-if="name" v-show="hexName">
-        Your color is
+        Click to copy link
         <output @click="copyHex">{{ hexName }}</output>
       </label>
 
@@ -24,7 +24,7 @@
 
     <footer>
       <p>Made by <a href="http://talentedunicorn.com">Talentedunicorn</a></p>
-      <a :href="shareLink">Share on Twitter</a>
+      <a :href="twitterLink">Share on Twitter</a>
     </footer>
   </main>
 </template>
@@ -52,9 +52,12 @@ export default {
     invertedHex() {
       return invert(this.hexName);
     },
-    shareLink() {
+    twitterLink() {
       const description = "A fun toy that changes your text to colors";
       return `https://www.twitter.com/intent/tweet?url=${window.location.origin}&text=${description}`;
+    },
+    shareLink() {
+      return `${window.location.href}?text=${this.name}`;
     },
   },
   methods: {
@@ -70,7 +73,7 @@ export default {
       return "00000".substring(0, 6 - c.length) + c;
     },
     copyHex() {
-      navigator.clipboard.writeText(this.hexName).then(() => {
+      navigator.clipboard.writeText(this.shareLink).then(() => {
         this.copied = true;
         setTimeout(() => {
           this.copied = false;
