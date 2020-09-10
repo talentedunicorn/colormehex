@@ -60,7 +60,7 @@ export default {
       return `https://www.twitter.com/intent/tweet?url=${window.location.origin}&text=${description}`;
     },
     shareLink() {
-      return `${window.location.href}?text=${this.name}`;
+      return encodeURI(`${window.location.origin}?text=${this.name}`);
     },
   },
   methods: {
@@ -92,7 +92,7 @@ export default {
     const params = new URLSearchParams(window.location.search);
     const text = params.get("text");
     if (text && text.length > 0) {
-      this.name = text;
+      this.name = decodeURI(text);
     }
   },
 };
