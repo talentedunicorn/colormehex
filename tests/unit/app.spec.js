@@ -44,4 +44,11 @@ describe("App.vue", () => {
     wrapper.vm.clear();
     expect(wrapper.vm.name).toBe("");
   });
+
+  it("should be able to load value from url query", () => {
+    const string = "Test value";
+    window.history.pushState({}, "Test page", `/?text=${string}`);
+    const wrapper = shallowMount(App);
+    expect(wrapper.vm.name).toBe(string);
+  });
 });
