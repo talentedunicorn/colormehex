@@ -23,8 +23,13 @@
     </form>
 
     <footer>
-      <p>Made by <a href="http://talentedunicorn.com">Talentedunicorn</a></p>
-      <a :href="twitterLink">Share on Twitter</a>
+      <p>
+        Made by
+        <a @click="trackLink" href="https://talentedunicorn.com"
+          >Talentedunicorn</a
+        >
+      </p>
+      <a @click="trackLink" :href="twitterLink">Share on Twitter</a>
     </footer>
   </main>
 </template>
@@ -85,6 +90,13 @@ export default {
     },
     clear() {
       return (this.name = "");
+    },
+    trackLink(e) {
+      window.gtag &&
+        window.gtag("event", e.type, {
+          event_category: "outbound link",
+          event_label: e.target.href,
+        });
     },
   },
   mounted() {
