@@ -61,7 +61,7 @@ export default {
       };
     },
     invertedHex() {
-      return invert(this.hexName);
+      return invert(this.hexName, true);
     },
     twitterLink() {
       const description = "A fun toy that changes your text to colors";
