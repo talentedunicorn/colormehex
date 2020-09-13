@@ -17,7 +17,7 @@ describe("App.vue", () => {
   it("should render the hexName correctly", async () => {
     wrapper.setData({ name: "Cedric" });
     await wrapper.vm.$nextTick();
-    expect(wrapper.vm.hexName).toBe("#AE398A");
+    expect(wrapper.vm.hexName).toHaveLength(7);
   });
 
   it("should be able to copy link", async () => {
@@ -50,5 +50,12 @@ describe("App.vue", () => {
     window.history.pushState({}, "Test page", `/?text=${string}`);
     const wrapper = shallowMount(App);
     expect(wrapper.vm.name).toBe(string);
+  });
+
+  it("should track outbound links", async () => {
+    window.gtag = jest.fn();
+    const outboundLink = wrapper.find(".twitter");
+    await outboundLink.trigger("click");
+    expect(window.gtag).toHaveBeenCalledTimes(1);
   });
 });
