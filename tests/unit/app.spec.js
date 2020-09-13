@@ -35,8 +35,6 @@ describe("App.vue", () => {
     wrapper.vm.copyHex();
     await wrapper.vm.$nextTick();
     expect(mockedWriteText).toHaveBeenCalledTimes(1);
-    jest.runAllTimers();
-    expect(wrapper.vm.copied).toBe(false);
   });
 
   it("should be able to clear input", () => {
