@@ -17,10 +17,9 @@
       <label v-if="name" v-show="hexName">
         Click to copy link
         <output @click="copyHex">{{ hexName }}</output>
-        <small v-if="copied">{{ shareLink }}</small>
+        <small>{{ shareLink }}</small>
+        <strong v-if="copied">Copied to clipboard!</strong>
       </label>
-
-      <span v-if="copied">Copied to clipboard</span>
     </form>
 
     <footer>
@@ -86,6 +85,9 @@ export default {
     copyHex() {
       navigator.clipboard.writeText(this.shareLink).then(() => {
         this.copied = true;
+        setTimeout(() => {
+          this.copied = false;
+        }, 3000);
       });
     },
     clear() {
