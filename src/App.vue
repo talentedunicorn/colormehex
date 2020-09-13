@@ -17,6 +17,7 @@
       <label v-if="name" v-show="hexName">
         Click to copy link
         <output @click="copyHex">{{ hexName }}</output>
+        <small v-if="copied">{{ shareLink }}</small>
       </label>
 
       <span v-if="copied">Copied to clipboard</span>
@@ -29,7 +30,9 @@
           >Talentedunicorn</a
         >
       </p>
-      <a @click="trackLink" :href="twitterLink">Share on Twitter</a>
+      <a @click="trackLink" class="twitter" :href="twitterLink"
+        >Share on Twitter</a
+      >
     </footer>
   </main>
 </template>
@@ -58,7 +61,7 @@ export default {
       };
     },
     invertedHex() {
-      return invert(this.hexName);
+      return invert(this.hexName, true);
     },
     twitterLink() {
       const description = "A fun toy that changes your text to colors";
@@ -83,13 +86,11 @@ export default {
     copyHex() {
       navigator.clipboard.writeText(this.shareLink).then(() => {
         this.copied = true;
-        setTimeout(() => {
-          this.copied = false;
-        }, 2000);
       });
     },
     clear() {
-      return (this.name = "");
+      this.name = "";
+      this.copied = false;
     },
     trackLink(e) {
       window.gtag &&
@@ -178,6 +179,10 @@ form {
     margin: 1rem 0;
     font-size: 3rem;
     font-weight: bold;
+  }
+
+  small {
+    padding: 1em 0;
   }
 }
 
