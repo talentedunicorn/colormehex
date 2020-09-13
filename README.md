@@ -10,4 +10,4 @@
 # Usage
 
 - Access the [web app](https://colormehex.talentedunicorn.com)
-  - Pass param `?text=[text to populate input]`
+  - Query parameter. e.g `?text=[text to populate input]`
