@@ -64,9 +64,14 @@ describe("App.vue", () => {
     expect(window.gtag).toHaveBeenCalledTimes(1);
   });
 
-  it("should load birthday mode from query", () => {
-    window.history.pushState({}, "Test page", `/?text=Birthday&birthday`);
+  it("should load birthday mode from query and decode encoded values", () => {
+    window.history.pushState(
+      {},
+      "Test page",
+      `/?text=${encodeURIComponent("A&W")}&birthday`
+    );
     const wrapper = shallowMount(App);
     expect(wrapper.vm.birthday).toBe(true);
+    expect(wrapper.vm.name).toBe("A&W");
   });
 });

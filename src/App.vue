@@ -116,7 +116,7 @@ export default {
       return `https://www.twitter.com/intent/tweet?url=${this.rootUrl}&text=${description}`;
     },
     shareLink() {
-      return encodeURI(`${this.rootUrl}?text=${this.name}`);
+      return `${this.rootUrl}?text=${encodeURIComponent(this.name)}`;
     },
   },
   methods: {
