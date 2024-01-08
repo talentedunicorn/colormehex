@@ -13,8 +13,6 @@
       <%= htmlWebpackPlugin.options.title %> &#35; <%=
       htmlWebpackPlugin.options.description %>
     </title>
-  </head>
-  <body>
     <% if (process.env.NODE_ENV === "production") { %>
     <script
       async
@@ -26,10 +24,12 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
+  
       gtag("config", "<%= VUE_APP_GA_TRACKING %>");
     </script>
     <% } %>
+  </head>
+  <body>
     <noscript>
       <strong
         >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
