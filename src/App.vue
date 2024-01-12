@@ -4,7 +4,11 @@
       <span class="hidden">ColorMeHex</span>
     </a>
     <form @submit.prevent>
-      <label v-if="birthday" for="name" @click="launchConfetti"
+      <label
+        v-if="birthday"
+        data-testid="birthday"
+        for="name"
+        @click="launchConfetti"
         >🎉 Happy birthday... 🎉</label
       >
       <label v-else for="name">Type something and press Enter</label>
@@ -14,13 +18,16 @@
         v-model="name"
         type="search"
         :disabled="birthday"
+        data-testid="input"
       />
 
       <transition name="show" appear>
         <div v-if="name" v-show="hexName" class="results">
           <div class="colorCopy">
             <label for="hexColor">Copy color</label>
-            <output id="hexColor" @click="copyHex">{{ hexName }}</output>
+            <output id="hexColor" data-testid="hexname" @click="copyHex">{{
+              hexName
+            }}</output>
           </div>
           <div class="actions">
             <a v-if="birthday" :href="rootUrl" title="Clear">
@@ -56,7 +63,7 @@
         </div>
       </transition>
       <transition name="show">
-        <p v-if="message" class="notification">
+        <p v-if="message" data-testid="message" class="notification">
           <strong>{{ message }}</strong>
         </p>
       </transition>

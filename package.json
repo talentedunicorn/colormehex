@@ -7,9 +7,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vue-cli-service test:unit",
-    "test:watch": "vue-cli-service test:unit --watch",
-    "test:coverage": "vue-cli-service test:unit --coverage",
+    "test": "playwright test",
+    "test:show-report": "playwright show-report",
     "lint": "eslint .",
     "pre-commit": "pretty-quick --staged",
     "generate-pwa-assets": "pwa-assets-generator",
@@ -22,6 +21,8 @@
     "vue": "^3.2.36"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.11.0",
     "@vite-pwa/assets-generator": "^0.2.2",
     "@vitejs/plugin-vue": "^5.0.2",
     "eslint": "^8.16.0",
