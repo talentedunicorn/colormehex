@@ -1,9 +1,11 @@
 import { createApp } from "vue";
-import { createMetaManager } from "vue-meta";
+import { createHead } from "@unhead/vue";
 import App from "./App.vue";
-import "./registerServiceWorker";
 
-const app = createApp(App).use(createMetaManager());
+const app = createApp(App);
+
+const head = createHead();
+app.use(head);
 app.config.productionTip = false;
 
 app.mount("#app");
