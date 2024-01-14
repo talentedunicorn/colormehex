@@ -1,4 +1,4 @@
-![colormehex](src/assets/logo.svg)
+![colormehex](public/logo.svg)
 
 # colormehex
 
