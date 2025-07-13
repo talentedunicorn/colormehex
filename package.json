@@ -23,7 +23,7 @@
   "devDependencies": {
     "@playwright/test": "^1.53.1",
     "@types/node": "^22.15.32",
-    "@vite-pwa/assets-generator": "^0.2.6",
+    "@vite-pwa/assets-generator": "^1.0.0",
     "@vitejs/plugin-vue": "^5.2.4",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^9.1.0",
