@@ -25,9 +25,13 @@
         <div v-if="name" v-show="hexName" class="results">
           <div class="colorCopy">
             <label for="hexColor">Copy color</label>
-            <output id="hexColor" data-testid="hexname" @click="copyHex">{{
-              hexName
-            }}</output>
+            <output
+              id="hexColor"
+              data-testid="hexname"
+              @click="copyHex"
+              data-umami-event="Copy color"
+              >{{ hexName }}</output
+            >
           </div>
           <div class="actions">
             <a v-if="birthday" :href="rootUrl" title="Clear">
@@ -37,7 +41,12 @@
                 ></path>
               </svg>
             </a>
-            <a v-else :href="shareLink + '&birthday'" title="Birthday mode">
+            <a
+              v-else
+              :href="shareLink + '&birthday'"
+              title="Birthday mode"
+              data-umami-event="Birthday mode"
+            >
               <svg
                 id="icon-birthday-cake"
                 viewBox="0 0 24 24"
@@ -52,6 +61,7 @@
               :href="birthday ? shareLink + '&birthday' : shareLink"
               title="Share"
               @click.prevent="shareColor"
+              data-umami-event="Share color"
             >
               <svg id="icon-share" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -72,12 +82,17 @@
     <footer>
       <p>
         Made by
-        <a href="https://talentedunicorn.com" @click="trackLink"
+        <a
+          href="https://talentedunicorn.com"
+          data-umami-event="Visit Talentedunicorn"
           >Talentedunicorn</a
         >
       </p>
       <p>
-        <a class="twitter" :href="twitterLink" @click="trackLink"
+        <a
+          class="twitter"
+          :href="twitterLink"
+          data-umami-event="Share on Twitter"
           >Share on Twitter</a
         >
       </p>
@@ -173,14 +188,6 @@ const shareColor = () => {
   }
 };
 
-const trackLink = (e) => {
-  window.gtag &&
-    window.gtag("event", e.type, {
-      event_category: "outbound link",
-      event_label: e.target.href,
-    });
-};
-
 const launchConfetti = () => {
   confetti({
     particleCount: 100,
@@ -212,7 +219,7 @@ onMounted(() => {
       {
         name: "og:image",
         content: `https://plchldr.co/i/1200x630?text=ColorMeHex&fc=${invertedHex.value.slice(
-          1
+          1,
         )}&bg=${hexName.value.slice(1)}`,
       },
       {
