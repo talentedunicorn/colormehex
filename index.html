@@ -10,19 +10,6 @@
     <script type="module" src="/src/main.js"></script>
     <% if (MODE === "production") { %>
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_TRACKING%"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "%VITE_GA_TRACKING%");
-    </script>
-    <script
       defer
       src="https://cloud.umami.is/script.js"
       data-website-id="%VITE_UMAMI_ID%"
