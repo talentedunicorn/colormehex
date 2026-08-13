@@ -1,10 +1,10 @@
 import { createApp } from "vue";
-import { createUnhead } from "@unhead/vue";
+import { createHead } from "@unhead/vue/client";
 import App from "./App.vue";
 
 const app = createApp(App);
 
-const head = createUnhead();
+const head = createHead();
 app.use(head);
 app.config.productionTip = false;
 
