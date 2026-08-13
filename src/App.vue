@@ -100,7 +100,7 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useHead } from "@unhead/vue";
 import invert from "invert-color";
