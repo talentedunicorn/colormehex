@@ -17,7 +17,7 @@
   "dependencies": {
     "@unhead/vue": "^3.3.2",
     "canvas-confetti": "^1.9.4",
-    "invert-color": "^2.0.0",
+    "invert-color": "^3.0.0",
     "vue": "^3.5.41"
   },
   "devDependencies": {

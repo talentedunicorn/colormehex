@@ -18,8 +18,8 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       invert-color:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^3.0.0
+        version: 3.0.0
       vue:
         specifier: ^3.5.41
         version: 3.5.41
@@ -3405,11 +3405,12 @@ packages:
       }
     engines: { node: ">= 0.4" }
 
-  invert-color@2.0.0:
+  invert-color@3.0.0:
     resolution:
       {
-        integrity: sha512-9s6IATlhOAr0/0MPUpLdMpk81ixIu8IqwPwORssXBauFT/4ff/iyEOcojd0UYuPwkDbJvL1+blIZGhqVIaAm5Q==,
+        integrity: sha512-bs6ciT4mdb3AuK2ooCBvYUUDRl4fNAwqcikdPxb12sRUmMk4oedGFav6LOlQzf9rzlLqruR85kT7UKpciC0ysQ==,
       }
+    engines: { node: ">=20" }
 
   is-array-buffer@3.0.5:
     resolution:
@@ -7097,7 +7098,7 @@ snapshots:
       hasown: 2.0.4
       side-channel: 1.1.1
 
-  invert-color@2.0.0: {}
+  invert-color@3.0.0: {}
 
   is-array-buffer@3.0.5:
     dependencies:
